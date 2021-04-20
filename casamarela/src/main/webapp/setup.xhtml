@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<ui:composition template="_template.xhtml">
+	<ui:define name="content">
+		<p:messages><p:autoUpdate /></p:messages>
+		<h:form>
+			<p:card style="width: 25em" class="card-form">
+
+				<!-- SE PRECISAR DE IMAGEM NO CARD <f:facet name="header">
+				        <img alt="user header" src="../../resources/demo/images/usercard.png"/>
+				    </f:facet>  -->
+				<f:facet name="title">
+				        New Setup
+				    </f:facet>
+				<!-- SE PRECISAR DE SUBTITULO <f:facet name="subtitle">
+				        Card subtitle
+				    </f:facet> -->
+
+				<div class="p-field p-grid">
+					<label for="name" class="p-col-fixed" style="width: 100px">Name</label>
+					<div class="p-col">
+						<p:inputText id="name" value="#{setupBean.setup.name}"
+							required="true" />
+					</div>
+				</div>
+
+				<div class="p-field p-grid">
+					<label for="description" class="p-col-fixed" style="width: 100px">Description</label>
+					<div class="p-col">
+						<p:inputTextarea id="description"
+							value="#{setupBean.setup.description}">
+							<f:validateLength maximum="255" minimum="50" />
+						</p:inputTextarea>
+					</div>
+				</div>
+
+				<div class="p-field p-grid">
+					<label for="price" class="p-col-fixed" style="width: 100px">Price</label>
+					<div class="p-col">
+						<p:inputText id="price" value="#{setupBean.setup.price}">
+							<f:validateDoubleRange minimum="0" />
+
+						</p:inputText>
+					</div>
+				</div>
+
+				<f:facet name="footer">
+					<p:commandButton icon="pi pi-check" value="Save"
+						action="#{setupBean.save}" />
+					<p:commandButton icon="pi pi-times" value="Cancel"
+						styleClass="ui-button-secondary" style="margin-left: .5em" />
+				</f:facet>
+			</p:card>
+		</h:form>
+		
+		
+		
+	</ui:define>
+</ui:composition>
+
+</html>
